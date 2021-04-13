@@ -36,3 +36,16 @@ urlpatterns = [
     path('blog/', include('blogapi.urls', namespace='blog')),
 ] 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+"""
+
+https://jamshid98.pythonanywhere.com/blog/          get
+https://jamshid98.pythonanywhere.com/blog/<id>/     get
+
+https://jamshid98.pythonanywhere.com/api/rest-auth/login/
+https://jamshid98.pythonanywhere.com/api/rest-auth/logout/
+https://jamshid98.pythonanywhere.com/api/rest-auth/password/reset/
+https://jamshid98.pythonanywhere.com/api/rest-auth/password/reset/confirm/
+https://jamshid98.pythonanywhere.com/api/rest-auth/registration/
+
+"""
