@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from dj_rest_auth.views import PasswordResetConfirmView
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -22,12 +23,13 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')), # django-rest-framework
-    path('api/rest-auth/', include('rest_auth.urls')), # django-rest-auth
-        # api/rest-auth/login/
-        # api/rest-auth/logout/
-        # api/rest-auth/password/reset/
-        # api/rest-auth/password/reset/confirm/
-    path('api/rest-auth/registration/', include('rest_auth.registration.urls')), # rest_auth.registration
+    path('api/dj-rest-auth/', include('dj_rest_auth.urls')), # django-rest-auth
+    path('api/dj-rest-auth/password/reset/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+        # api/dj-rest-auth/login/
+        # api/dj-rest-auth/logout/
+        # api/dj-rest-auth/password/reset/
+        # api/dj-rest-auth/password/reset/confirm/
+    path('api/dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')), # dj-rest_auth.registration
     
 
     path('', include('core.urls', namespace='core')),
@@ -37,15 +39,16 @@ urlpatterns = [
 ] 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+
 """
 
 https://jamshid98.pythonanywhere.com/blog/          get
 https://jamshid98.pythonanywhere.com/blog/<id>/     get
 
-https://jamshid98.pythonanywhere.com/api/rest-auth/login/
-https://jamshid98.pythonanywhere.com/api/rest-auth/logout/
-https://jamshid98.pythonanywhere.com/api/rest-auth/password/reset/
-https://jamshid98.pythonanywhere.com/api/rest-auth/password/reset/confirm/
-https://jamshid98.pythonanywhere.com/api/rest-auth/registration/
+https://jamshid98.pythonanywhere.com/api/dj-rest-auth/login/
+https://jamshid98.pythonanywhere.com/api/dj-rest-auth/logout/
+https://jamshid98.pythonanywhere.com/api/dj-rest-auth/password/reset/
+https://jamshid98.pythonanywhere.com/api/dj-rest-auth/password/reset/confirm/
+https://jamshid98.pythonanywhere.com/api/dj-rest-auth/registration/
 
 """

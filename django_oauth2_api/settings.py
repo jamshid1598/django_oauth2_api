@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     'tinymce', # for rich-text editor
     'rest_framework', # djangorestframework
     'rest_framework.authtoken', # authentication with token
-    'rest_auth', # for log in, logout and reset password
-    'rest_auth.registration', # for sign in
+    'dj_rest_auth', # for log in, logout and reset password
+    'dj_rest_auth.registration', # for sign in
 
     'corsheaders',
 
